@@ -33,8 +33,12 @@ const initDownloadPage = async () => {
     if (!codenameDisplay || !downloadLink || !recoveryLinkContainer) return;
 
     const params = new URLSearchParams(window.location.search);
-    const device = devices.find((device) => device.codename === params.get('device'));
-    if (!device) return;
+    const targetDevice = params.get('device');
+    const device = devices.find((device) => device.codename === targetDevice);
+    if (!device) {
+        nameDisplay.innerText = 'Error: No such device found: ' + targetDevice;
+        return;
+    }
 
     const otaDetails = await getOtaDetails(device.codename);
 
