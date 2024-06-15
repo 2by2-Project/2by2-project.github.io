@@ -18,3 +18,8 @@ ul {
 li {
   line-height: 2.5;
 }
+
+code {
+  padding: 4px;
+  background: #E0E0E0;
+}

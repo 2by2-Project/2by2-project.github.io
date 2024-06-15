@@ -14,12 +14,17 @@ const initDevicesPage = async () => {
 
     for (let i = 0; i < devices.length; i++) {
         var deviceDownloadLinkLi = document.createElement('li');
-    
+
         var deviceDownloadLink = document.createElement('a');
-        deviceDownloadLink.innerText = `${devices[i].name} - ${devices[i].codename}`;
+        deviceDownloadLink.innerText = devices[i].name;
         deviceDownloadLink.href = `./download.htm?device=${devices[i].codename}`;
+
+        var deviceDownloadCodename = document.createElement('code');
+        deviceDownloadCodename.innerText = devices[i].codename;
+        deviceDownloadCodename.style.marginLeft = '32px';
         
         deviceDownloadLinkLi.appendChild(deviceDownloadLink);
+        deviceDownloadLinkLi.appendChild(deviceDownloadCodename);
         
         devicesContainer.appendChild(deviceDownloadLinkLi);
     }
