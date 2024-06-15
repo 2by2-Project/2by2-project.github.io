@@ -17,7 +17,7 @@ const initDevicesPage = async () => {
     
         var deviceDownloadLink = document.createElement('a');
         deviceDownloadLink.innerText = `${devices[i].name} - ${devices[i].codename}`;
-        deviceDownloadLink.href = `./download.htm?device_id=${i}`;
+        deviceDownloadLink.href = `./download.htm?device=${devices[i].codename}`;
         
         deviceDownloadLinkLi.appendChild(deviceDownloadLink);
         
@@ -33,20 +33,21 @@ const initDownloadPage = async () => {
     if (!codenameDisplay || !downloadLink || !recoveryLinkContainer) return;
 
     const params = new URLSearchParams(window.location.search);
-    const deviceId = params.get('device_id');
+    const device = devices.find((device) => device.codename === params.get('device'));
+    if (!device) return;
 
-    const otaDetails = await getOtaDetails(devices[deviceId].codename);
+    const otaDetails = await getOtaDetails(device.codename);
 
-    nameDisplay.innerText = devices[deviceId].name;
-    codenameDisplay.innerText = devices[deviceId].codename;
+    nameDisplay.innerText = device.name;
+    codenameDisplay.innerText = device.codename;
 
     downloadLink.innerText = otaDetails.filename;
     downloadLink.href = otaDetails.url;
 
-    devices[deviceId].recovery_images.forEach((partition) => {
+    device.recovery_images.forEach((partition) => {
         var recoveryLink = document.createElement('a');
         recoveryLink.innerText = `${partition}.img`;
-        recoveryLink.href = `https://master.dl.sourceforge.net/project/project2by2-test/${devices[deviceId].codename}/${otaDetails.version}/${partition}/${partition}.img?viasf=1`;
+        recoveryLink.href = `https://master.dl.sourceforge.net/project/project2by2-test/${device.codename}/${otaDetails.version}/${partition}/${partition}.img?viasf=1`;
         recoveryLink.style.marginRight = '12px';
         recoveryLinkContainer.appendChild(recoveryLink);
     });
