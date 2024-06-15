@@ -1,5 +1,13 @@
+body {
+  font-size: 26px;
+}
+
 .main-logo {
-  width: 600px;
+  width: 90vmin;
+}
+
+h2 {
+  font-size: 4vmin;
 }
 
 ul {

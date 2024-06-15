@@ -52,8 +52,8 @@ const initDownloadPage = async () => {
         var recoveryLink = document.createElement('a');
         recoveryLink.innerText = `${partition}.img`;
         recoveryLink.href = `https://master.dl.sourceforge.net/project/project2by2-test/${device.codename}/${otaDetails.platform_version}/${partition}/${partition}.img?viasf=1`;
-        recoveryLink.style.marginRight = '12px';
         recoveryLinkContainer.appendChild(recoveryLink);
+        recoveryLinkContainer.appendChild(document.createElement('br'));
     });
 }
 
