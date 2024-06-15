@@ -1,0 +1,31 @@
+[
+  {
+    "codename": "sunfish",
+    "manufacturer": "Google",
+    "name": "Pixel 4a",
+    "maintainer": "lahaina",
+    "recovery_images": ["boot"],
+  },
+  {
+    "codename": "akita",
+    "manufacturer": "Google",
+    "name": "Pixel 8a",
+    "maintainer": "lahaina",
+    "recovery_images": ["boot", "vendor_boot", "dtbo", "vendor_kernel_boot"],
+  },
+  {
+    "codename": "denniz",
+    "manufacturer": "OnePlus",
+    "name": "OnePlus Nord 2 5G",
+    "maintainer": "lahaina",
+    "recovery_images": ["recovery"],
+  },
+  {
+    "codename": "penang",
+    "manufacturer": "Motorola",
+    "name": "moto g53 family",
+    "maintainer": "lahaina",
+    "recovery_images": ["boot"],
+    "copy_partitions": true,
+  },
+]
