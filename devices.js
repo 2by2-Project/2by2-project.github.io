@@ -33,6 +33,7 @@ const initDevicesPage = async () => {
 const initDownloadPage = async () => {
     const nameDisplay = document.querySelector('#device_name');
     const codenameDisplay = document.querySelector('#device_codename');
+    const changeLogsDisplay = document.querySelector('#device_changelog');
     const downloadLink = document.querySelector('#device_download_link');
     const recoveryLinkContainer = document.querySelector('#device_recovery_links');
     if (!codenameDisplay || !downloadLink || !recoveryLinkContainer) return;
@@ -49,6 +50,9 @@ const initDownloadPage = async () => {
 
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
+
+    const changeLogs = await fetch(`https://raw.githubusercontent.com/2by2-Project/android_vendor_2by2-ota/main/changelogs/${device.codename}.txt`).then(response => response.text());
+    changeLogsDisplay.innerText = changeLogs;
 
     downloadLink.innerText = otaDetails.filename;
     downloadLink.href = otaDetails.url;

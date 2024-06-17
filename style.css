@@ -16,10 +16,21 @@ ul {
 }
 
 li {
-  line-height: 2.5;
+  line-height: 2.0;
 }
 
-code {
+code, pre {
   padding: 4px;
   background: #E0E0E0;
+}
+
+#device_changelog {
+  text-align: left;
+  width: 80vmin;
+  font-size: 16px;
+}
+
+.pre-scrollable {
+    max-height: 260px;
+    overflow-y: auto;
 }
