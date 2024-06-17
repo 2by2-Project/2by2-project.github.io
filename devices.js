@@ -57,12 +57,14 @@ const initDownloadPage = async () => {
     downloadLink.innerText = otaDetails.filename;
     downloadLink.href = otaDetails.url;
 
+    let separator = '';
     device.recovery_images.forEach((partition) => {
         var recoveryLink = document.createElement('a');
         recoveryLink.innerText = `${partition}.img`;
         recoveryLink.href = `https://master.dl.sourceforge.net/project/project2by2-test/${device.codename}/${otaDetails.platform_version}/${partition}/${partition}.img?viasf=1`;
+        recoveryLinkContainer.appendChild(document.createTextNode(separator));
         recoveryLinkContainer.appendChild(recoveryLink);
-        recoveryLinkContainer.appendChild(document.createElement('br'));
+        separator = ' , ';
     });
 }
 

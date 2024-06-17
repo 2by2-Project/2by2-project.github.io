@@ -24,6 +24,11 @@ code, pre {
   background: #E0E0E0;
 }
 
+#device_recovery_links {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
 #device_changelog {
   text-align: left;
   width: 80vmin;
