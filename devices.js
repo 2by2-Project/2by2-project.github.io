@@ -32,6 +32,7 @@ const initDevicesPage = async () => {
 
 const initDownloadPage = async () => {
     const nameDisplay = document.querySelector('#device_name');
+    const warningDisplay = document.querySelector('.warning');
     const codenameDisplay = document.querySelector('#device_codename');
     const changeLogsDisplay = document.querySelector('#device_changelog');
     const downloadLink = document.querySelector('#device_download_link');
@@ -50,6 +51,12 @@ const initDownloadPage = async () => {
 
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
+
+    if (device.copy_partitions) {
+        warningDisplay.style.display = 'block';
+        warningDisplay.innerHTML = `For first flashing, you need to flash copy-partitions.zip with OTA zips.`
+                                 + `<a href="https://sourceforge.net/projects/project2by2-test/files/misc/copy_partitions/copy-partitions-20220613-signed.zip/download">Download is here</a>`;
+    }
 
     const changeLogs = await fetch(`https://raw.githubusercontent.com/2by2-Project/android_vendor_2by2-ota/main/changelogs/${device.codename}.txt`).then(response => response.text());
     changeLogsDisplay.innerText = changeLogs;
