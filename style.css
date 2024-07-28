@@ -24,6 +24,10 @@ code, pre {
   background: #E0E0E0;
 }
 
+#device_maintainer {
+  color: green;
+}
+
 #device_recovery_links {
   overflow-wrap: break-word;
   word-break: break-all;

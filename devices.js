@@ -34,6 +34,7 @@ const initDownloadPage = async () => {
     const nameDisplay = document.querySelector('#device_name');
     const warningDisplay = document.querySelector('.warning');
     const codenameDisplay = document.querySelector('#device_codename');
+    const maintainerDisplay = document.querySelector('#device_maintainer');
     const changeLogsDisplay = document.querySelector('#device_changelog');
     const downloadLink = document.querySelector('#device_download_link');
     const recoveryLinkContainer = document.querySelector('#device_recovery_links');
@@ -51,6 +52,7 @@ const initDownloadPage = async () => {
 
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
+    maintainerDisplay.innerText = device.maintainer;
 
     if (device.copy_partitions) {
         warningDisplay.style.display = 'block';
