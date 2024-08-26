@@ -17,7 +17,7 @@ const initDevicesPage = async () => {
 
         var deviceDownloadLink = document.createElement('a');
         deviceDownloadLink.innerText = devices[i].name;
-        deviceDownloadLink.href = `./devices/${devices[i].codename}`;
+        deviceDownloadLink.href = `./download.htm?device=${devices[i].codename}`;
 
         var deviceDownloadCodename = document.createElement('code');
         deviceDownloadCodename.innerText = devices[i].codename;
