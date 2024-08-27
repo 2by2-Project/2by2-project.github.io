@@ -46,10 +46,14 @@ const createDeviceListItem = (device) => {
 
 const displayDeviceBannerAndIcon = (bannerDisplay, iconDisplay, device) => {
     if (bannerDisplay) {
-        bannerDisplay.innerText = device.banner || 'No banner available';
+        bannerDisplay.innerHTML = device.banner 
+            ? `<img src="https://raw.githubusercontent.com/2by2-Project/2by2-project.github.io/main/banners/${device.codename}.png" alt="${device.name} banner">`
+            : 'No banner available';
     }
     if (iconDisplay) {
-        iconDisplay.innerHTML = device.icon ? `<img src="${device.icon}" alt="${device.name} icon">` : 'No icon available';
+        iconDisplay.innerHTML = device.icon 
+            ? `<img src="${device.icon}" alt="${device.name} icon">`
+            : 'No icon available';
     }
 }
 
