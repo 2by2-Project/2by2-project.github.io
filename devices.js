@@ -34,7 +34,7 @@ const createDeviceListItem = (device) => {
     const deviceDownloadLinkLi = document.createElement('li');
     const deviceDownloadLink = document.createElement('a');
     deviceDownloadLink.innerText = device.name;
-    deviceDownloadLink.href = `./download.htm?device=${device.codename}`;
+    deviceDownloadLink.href = `./devices/${device.codename}`;
 
     const deviceDownloadCodename = document.createElement('code');
     deviceDownloadCodename.innerText = device.codename;
