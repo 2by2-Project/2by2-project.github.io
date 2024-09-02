@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<title>2by2 Project</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="img/2by2-logo-emblem.png">
+<link rel="apple-touch-icon" href="img/2by2-logo-emblem.png" />
+<script src="devices.js"></script>
+</head>
+<body>
+  <center>
+  <h1 id="device_name">Loading...</h1>
+  <div class="warning"></div>
+  <ul>
+    <li>Codename: <code id="device_codename"></code></li>
+    <li>Maintained by: <span id="device_maintainer"></span></li>
+    <li>Download latest build: <a id="device_download_link"></a></li>
+    <li>Recovery:
+      <span id="device_recovery_links"></span>
+    </li>
+    <li>
+      <details>
+        <summary>Changelogs</summary>
+        <pre id="device_changelog" class="pre-scrollable"></pre>
+      </details>
+    </li>
+  </ul>
+  </center>
+</body>
+</html>
