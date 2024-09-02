@@ -62,6 +62,7 @@ const initDownloadPage = async () => {
     const warningDisplay = document.querySelector('.warning');
     const codenameDisplay = document.querySelector('#device_codename');
     const maintainerDisplay = document.querySelector('#device_maintainer');
+    const buildDateDisplay = document.querySelector('#device_build_date'); // Adicionado para a data da build
     const changeLogsDisplay = document.querySelector('#device_changelog');
     const downloadLink = document.querySelector('#device_download_link');
     const recoveryLinkContainer = document.querySelector('#device_recovery_links');
@@ -84,10 +85,14 @@ const initDownloadPage = async () => {
             fetch(`https://raw.githubusercontent.com/2by2-Project/android_vendor_2by2-ota/main/changelogs/${device.codename}.txt`).then(response => response.text())
         ]);
 
+        // Extraindo a data da build da primeira linha do changelog
+        const buildDate = changeLogs.split('\n')[0].trim();
+
         updateDownloadPageContent({
             nameDisplay,
             codenameDisplay,
             maintainerDisplay,
+            buildDateDisplay, // Adicionado para a data da build
             warningDisplay,
             changeLogsDisplay,
             downloadLink,
@@ -96,7 +101,8 @@ const initDownloadPage = async () => {
             otaDetails,
             changeLogs,
             bannerDisplay,
-            iconDisplay
+            iconDisplay,
+            buildDate // Adicionado para a data da build
         });
     } catch (error) {
         console.error('Failed to initialize download page:', error);
@@ -107,6 +113,7 @@ const updateDownloadPageContent = ({
     nameDisplay, 
     codenameDisplay, 
     maintainerDisplay, 
+    buildDateDisplay, // Adicionado para a data da build
     warningDisplay, 
     changeLogsDisplay, 
     downloadLink, 
@@ -115,21 +122,25 @@ const updateDownloadPageContent = ({
     otaDetails, 
     changeLogs, 
     bannerDisplay, 
-    iconDisplay 
+    iconDisplay,
+    buildDate // Adicionado para a data da build
 }) => {
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
     maintainerDisplay.innerText = device.maintainer;
+    buildDateDisplay.innerText = `Build Date: ${buildDate}`; // Define a data da build
 
     if (device.copy_partitions) {
-        warningDisplay.style.display = 'block';
+        warningDisplay.style.display = 'block'; // Mostra a barra de aviso se houver
         warningDisplay.innerHTML = `For first flashing, you need to flash copy-partitions.zip with OTA zips.`
                                     + `<a href="https://sourceforge.net/projects/project2by2-test/files/misc/copy_partitions/copy-partitions-20220613-signed.zip/download">Download is here</a>`;
+    } else {
+        warningDisplay.style.display = 'none'; // Esconde a barra de aviso se não houver
     }
 
     changeLogsDisplay.innerText = changeLogs;
 
-    downloadLink.innerText = otaDetails.filename;
+    downloadLink.innerText = "Download";
     downloadLink.href = otaDetails.url;
 
     recoveryLinkContainer.innerHTML = device.recovery_images.map(partition => 
