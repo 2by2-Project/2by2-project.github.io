@@ -16,9 +16,7 @@ window.onload = async () => {
 }
 
 const initDevicesPage = async () => {
-    const devicesContainer = document.querySelector('#devices');
-    const bannerDisplay = document.querySelector('#device_banner');
-    const iconDisplay = document.querySelector('#device_icon');
+    const devicesContainer = document.querySelector('.devices-container');
 
     if (!devicesContainer) return;
 
@@ -26,46 +24,31 @@ const initDevicesPage = async () => {
         const deviceDownloadLinkLi = createDeviceListItem(device);
         devicesContainer.appendChild(deviceDownloadLinkLi);
     });
-
-    displayDeviceBannerAndIcon(bannerDisplay, iconDisplay, devices[0]);
 }
 
 const createDeviceListItem = (device) => {
-    const deviceDownloadLinkLi = document.createElement('li');
+    const deviceDownloadLinkTr = document.createElement('tr');
+    deviceDownloadLinkTr.classList.add('device-link', 'gradient-banner');
+
     const deviceDownloadLink = document.createElement('a');
     deviceDownloadLink.innerText = device.name;
     deviceDownloadLink.href = `./download.htm?device=${device.codename}`;
 
-    const deviceDownloadCodename = document.createElement('code');
+    const deviceDownloadCodename = document.createElement('span');
     deviceDownloadCodename.innerText = device.codename;
-    deviceDownloadCodename.style.marginLeft = '32px';
 
-    deviceDownloadLinkLi.append(deviceDownloadLink, deviceDownloadCodename);
-    return deviceDownloadLinkLi;
-}
-
-const displayDeviceBannerAndIcon = (bannerDisplay, iconDisplay, device) => {
-    if (bannerDisplay) {
-        bannerDisplay.innerHTML = device.banner 
-            ? `<img src="https://raw.githubusercontent.com/2by2-Project/2by2-project.github.io/main/banners/${device.codename}.png" alt="${device.name} banner">`
-            : 'No banner available';
-    }
-    if (iconDisplay) {
-        iconDisplay.innerHTML = device.icon 
-            ? `<img src="${device.icon}" alt="${device.name} icon">`
-            : 'No icon available';
-    }
+    deviceDownloadLinkTr.append(deviceDownloadLink, deviceDownloadCodename);
+    return deviceDownloadLinkTr;
 }
 
 const initDownloadPage = async () => {
     const nameDisplay = document.querySelector('#device_name');
-    const warningDisplay = document.querySelector('.warning');
+    const warningCopyPartitionsDisplay = document.querySelector('.warning-copy-partitions');
     const codenameDisplay = document.querySelector('#device_codename');
     const maintainerDisplay = document.querySelector('#device_maintainer');
     const changeLogsDisplay = document.querySelector('#device_changelog');
     const downloadLink = document.querySelector('#device_download_link');
     const recoveryLinkContainer = document.querySelector('#device_recovery_links');
-    const bannerDisplay = document.querySelector('#device_banner');
     const iconDisplay = document.querySelector('#device_icon');
 
     if (!codenameDisplay || !downloadLink || !recoveryLinkContainer) return;
@@ -88,14 +71,13 @@ const initDownloadPage = async () => {
             nameDisplay,
             codenameDisplay,
             maintainerDisplay,
-            warningDisplay,
+            warningCopyPartitionsDisplay,
             changeLogsDisplay,
             downloadLink,
             recoveryLinkContainer,
             device,
             otaDetails,
             changeLogs,
-            bannerDisplay,
             iconDisplay
         });
     } catch (error) {
@@ -107,25 +89,21 @@ const updateDownloadPageContent = ({
     nameDisplay, 
     codenameDisplay, 
     maintainerDisplay, 
-    warningDisplay, 
+    warningCopyPartitionsDisplay, 
     changeLogsDisplay, 
     downloadLink, 
     recoveryLinkContainer, 
     device, 
     otaDetails, 
     changeLogs, 
-    bannerDisplay, 
-    iconDisplay 
+    iconDisplay
 }) => {
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
     maintainerDisplay.innerText = device.maintainer;
+    iconDisplay.src = 'assets/device/icon/' + device.codename + '.png';
 
-    if (device.copy_partitions) {
-        warningDisplay.style.display = 'block';
-        warningDisplay.innerHTML = `For first flashing, you need to flash copy-partitions.zip with OTA zips.`
-                                    + `<a href="https://sourceforge.net/projects/project2by2-test/files/misc/copy_partitions/copy-partitions-20220613-signed.zip/download">Download is here</a>`;
-    }
+    if (device.copy_partitions) warningCopyPartitionsDisplay.style.display = 'block';
 
     changeLogsDisplay.innerText = changeLogs;
 
@@ -134,9 +112,7 @@ const updateDownloadPageContent = ({
 
     recoveryLinkContainer.innerHTML = device.recovery_images.map(partition => 
         `<a href="https://master.dl.sourceforge.net/project/project2by2-test/${device.codename}/${otaDetails.platform_version}/${partition}/${partition}.img?viasf=1">${partition}.img</a>`
-    ).join(' , ');
-
-    displayDeviceBannerAndIcon(bannerDisplay, iconDisplay, device);
+    ).join('<br>');
 }
 
 const getDevices = async () => {

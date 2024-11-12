@@ -8,23 +8,36 @@
 <script src="devices.js"></script>
 </head>
 <body>
-  <center>
   <h1 id="device_name">Loading...</h1>
-  <div class="warning"></div>
-  <ul>
-    <li>Codename: <code id="device_codename"></code></li>
-    <li>Maintained by: <span id="device_maintainer"></span></li>
-    <li>Download latest build: <a id="device_download_link"></a></li>
-    <li>Recovery:
-      <span id="device_recovery_links"></span>
-    </li>
-    <li>
-      <details>
-        <summary>Changelogs</summary>
-        <pre id="device_changelog" class="pre-scrollable"></pre>
-      </details>
-    </li>
-  </ul>
-  </center>
+  <div class="device-image-container gradient-banner">
+    <img class="logo" src="img/2by2-logo-white.png">
+    <img id="device_icon">
+  </div>
+  <div class="warning-copy-partitions">
+    When you're on first time flashing, you need to flash copy-partitions.zip before flashing OTA zips.<br>
+    <a href="https://sourceforge.net/projects/project2by2-test/files/misc/copy_partitions/copy-partitions-20220613-signed.zip/download">Please download from here</a>
+  </div>
+  <details>
+    <summary class="btn-blue">Click here to view changelogs</summary>
+    <pre id="device_changelog" class="pre-scrollable"></pre>
+  </details>
+  <table class="device-ota-details">
+    <tr>
+      <th>Latest build</th>
+      <td><a id="device_download_link"></a></td>
+    </tr>
+    <tr>
+      <th>Recovery images</th>
+      <td><span id="device_recovery_links"></span></td>
+    </tr>
+    <tr>
+      <th>Codename</th>
+      <td><span id="device_codename"></span></td>
+    </tr>
+    <tr>
+      <th>Maintainer</th>
+      <td><span id="device_maintainer"></span></td>
+    </tr>
+  </table>
 </body>
 </html>

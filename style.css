@@ -1,43 +1,158 @@
+@font-face {
+  font-family: "DelaGothicOne_Regular";
+  src: url("assets/font/DelaGothicOne_Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Product_Regular";
+  src: url("assets/font/Product_Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Product_Bold";
+  src: url("assets/font/Product_Bold.ttf") format("truetype");
+}
+
+* {
+  font-family: "Product_Regular";
+  font-weight: lighter;
+  text-align: center;
+}
+
 body {
   font-size: 24px;
+  background: #111318;
+  color: white;
+  padding: 8px;
+}
+
+a {
+  color: #adc6ff;
+}
+
+h1 {
+  font-family: "DelaGothicOne_Regular";
+  font-weight: lighter;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.gradient-banner {
+  border: 2px solid #102f60;
+  border-radius: 24px;
+  background-image: linear-gradient(
+    -60deg, #2b4678 0%, #102f60 50%, #2b4678 100%
+  )
 }
 
 .main-logo {
   width: 90vmin;
 }
 
-h2 {
-  font-size: 4vmin;
+.main-title {
+  font-size: 10vmin;
+  text-wrap-mode: nowrap;
 }
 
-ul {
-  list-style: none;
-  padding-inline-start: 0;
+.main-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-li {
-  line-height: 2.0;
+.btn-blue {
+  font-family: "Product_Bold";
+  font-size: 24px;
+  border: 4px solid #445e91;
+  padding: 8px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #445e91;
+  background: #d8e2ff;
+  margin: 12px;
+}
+
+.devices-container {
+  display: block;
+}
+
+.device-link {
+  padding: 16px;
+  margin: 8px 0 8px 0;
+  font-size: 1.5em;
+  display: grid;
+  justify-items: start;
+  grid-auto-flow: column;
+}
+
+.device-link a {
+  max-width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Product_Bold";
+}
+
+.device-link span {
+  justify-self: end;
+}
+
+.device-image-container {
+  width: 100%;
+  height: 30vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0 16px 0;
+}
+
+.device-image-container .logo {
+  height: 25vmin;
+  position: absolute;
+  margin-left: -45vmin;
+}
+
+.device-image-container #device_icon {
+  height: 25vmax;
+  position: absolute;
+  margin-left: 45vmin;
+}
+
+.device-ota-details {
+  width: 100%;
+  font-size: 20px;
+  border: 1px solid #102f60;
+  border-radius: 8px;
+}
+
+.device-ota-details th, td {
+  padding: 8px;
+  border: 1px solid #102f60;
+  line-height: 40px;
+}
+
+.device-ota-details th {
+  text-align: left;
+  font-family: "Product_Bold";
+}
+
+.device-ota-details td {
+  text-align: right;
 }
 
 code, pre {
-  padding: 4px;
-  background: #E0E0E0;
-}
-
-#device_maintainer {
-  color: green;
-}
-
-#device_recovery_links {
-  overflow-wrap: break-word;
-  word-break: break-all;
+  background: #3f4759;
+  font-family: monospace;
 }
 
 #device_changelog {
   text-align: left;
-  width: 80vmin;
   font-size: 16px;
   line-height: 1.5;
+  padding: 8px;
 }
 
 .pre-scrollable {
@@ -45,9 +160,10 @@ code, pre {
   overflow-y: auto;
 }
 
-.warning {
-  width: 90vmin;
-  background: #FFAAAA;
+.warning-copy-partitions {
+  font-size: 20px;
+  background: #93000a;
   display: none;
   padding: 16px;
+  border-radius: 16px;
 }
