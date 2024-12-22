@@ -45,7 +45,6 @@ const initDownloadPage = async () => {
     const nameDisplay = document.querySelector('#device_name');
     const warningCopyPartitionsDisplay = document.querySelector('.warning-copy-partitions');
     const codenameDisplay = document.querySelector('#device_codename');
-    const maintainerDisplay = document.querySelector('#device_maintainer');
     const changeLogsDisplay = document.querySelector('#device_changelog');
     const downloadLink = document.querySelector('#device_download_link');
     const recoveryLinkContainer = document.querySelector('#device_recovery_links');
@@ -70,7 +69,6 @@ const initDownloadPage = async () => {
         updateDownloadPageContent({
             nameDisplay,
             codenameDisplay,
-            maintainerDisplay,
             warningCopyPartitionsDisplay,
             changeLogsDisplay,
             downloadLink,
@@ -87,8 +85,7 @@ const initDownloadPage = async () => {
 
 const updateDownloadPageContent = ({ 
     nameDisplay, 
-    codenameDisplay, 
-    maintainerDisplay, 
+    codenameDisplay,
     warningCopyPartitionsDisplay, 
     changeLogsDisplay, 
     downloadLink, 
@@ -100,7 +97,6 @@ const updateDownloadPageContent = ({
 }) => {
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
-    maintainerDisplay.innerText = device.maintainer;
     iconDisplay.src = 'assets/device/icon/' + device.codename + '.png';
 
     if (device.copy_partitions) warningCopyPartitionsDisplay.style.display = 'block';
