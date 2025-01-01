@@ -13,8 +13,23 @@
   src: url("assets/font/Product_Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "ShinGo-Light";
+  src: url("assets/font/sgl.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ShinGo-Medium";
+  src: url("assets/font/sgm.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ShinGo-Regular";
+  src: url("assets/font/sgr.ttf") format("truetype");
+}
+
 * {
-  font-family: "Product_Regular";
+  font-family: "Product_Regular", "ShinGo-Regular";
   font-weight: lighter;
   text-align: center;
 }
@@ -64,7 +79,7 @@ h2 {
 }
 
 .btn-blue {
-  font-family: "Product_Bold";
+  font-family: "Product_Bold", "ShinGo-Medium";
   font-size: 24px;
   border: 4px solid #445e91;
   padding: 8px;
@@ -136,7 +151,7 @@ h2 {
 
 .device-ota-details th {
   text-align: left;
-  font-family: "Product_Bold";
+  font-family: "Product_Bold", "ShinGo-Medium";
 }
 
 .device-ota-details td {

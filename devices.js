@@ -97,7 +97,7 @@ const updateDownloadPageContent = ({
 }) => {
     nameDisplay.innerText = device.name;
     codenameDisplay.innerText = device.codename;
-    iconDisplay.src = 'assets/device/icon/' + device.codename + '.png';
+    iconDisplay.src = '../assets/device/icon/' + device.codename + '.png';
 
     if (device.copy_partitions) warningCopyPartitionsDisplay.style.display = 'block';
 

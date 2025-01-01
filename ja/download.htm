@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<title>2by2 Project</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" type="image/png" href="../img/2by2-logo-emblem.png">
+<link rel="apple-touch-icon" href="../img/2by2-logo-emblem.png" />
+<script src="../devices.js"></script>
+</head>
+<body>
+  <h1 id="device_name">読み込み中...</h1>
+  <div class="device-image-container gradient-banner">
+    <img class="logo" src="../img/2by2-logo-white.png">
+    <img id="device_icon">
+  </div>
+  <div class="warning-copy-partitions">
+    【重要】文鎮化防止のため、初回導入時には必ず「copy-partitions.zip」もインストールしてください。<br>
+    <a href="https://sourceforge.net/projects/project2by2-test/files/misc/copy_partitions/copy-partitions-20220613-signed.zip/download">《ダウンロードはこちらから》</a>
+  </div>
+  <details>
+    <summary class="btn-blue">クリックで更新履歴を開きます（英語）</summary>
+    <pre id="device_changelog" class="pre-scrollable"></pre>
+  </details>
+  <table class="device-ota-details">
+    <tr>
+      <th>最新ビルド</th>
+      <td><a id="device_download_link"></a></td>
+    </tr>
+    <tr>
+      <th>カスタムリカバリー</th>
+      <td><span id="device_recovery_links"></span></td>
+    </tr>
+    <tr>
+      <th>端末のコードネーム</th>
+      <td><span id="device_codename"></span></td>
+    </tr>
+  </table>
+</body>
+</html>
